@@ -114,7 +114,7 @@ def entry(row, today, days):
 
 
 def digest(rows, today, days):
-    entries = [item for row in rows if (item := entry(row, today, days))]
+    entries = [item for row in sorted(rows, key=lambda row: parse_day(row.get("optn4")) or date.max) if (item := entry(row, today, days))]
     header = f"청년안심주택 {today} 일일 알림\n청약신청일이 오늘부터 {days}일 이내인 공고 {len(entries)}건\n목록의 청약신청일 기준입니다. 접수 시각·마감은 원문을 확인하세요.\n"
     unknown = sum(parse_day(row.get("optn4")) is None for row in rows)
     if unknown:
