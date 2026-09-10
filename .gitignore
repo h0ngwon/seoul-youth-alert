@@ -1,0 +1,6 @@
+__pycache__/
+.env
+.venv/
+state.tmp
+preview.txt
+sample.json
